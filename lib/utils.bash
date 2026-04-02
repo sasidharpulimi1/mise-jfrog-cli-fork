@@ -59,7 +59,7 @@ download_release() {
     jfrog_cli_name=jfrog
   fi
 
-  url="https://releases.jfrog.io/artifactory/jfrog-cli/v${effective_cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/${jfrog_cli_name}"
+  url="https://releases123.jfrog.io/artifactory/jfrog-cli/v${effective_cli_major_version}/${version}/jfrog-cli-${os_name}-${arch}/${jfrog_cli_name}"
 
   echo "* Downloading $TOOL_NAME release $version..."
   curl "${CURL_OPTS[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
