@@ -63,7 +63,9 @@ download_release() {
 
   echo "* Downloading $TOOL_NAME release $version..."
   output=$(curl -I -n https://artifactory.devops.devel.mathworks.com/artifactory/artifactory-build-info/)
-  echo "$output" | tr -d '\r'
+  echo "$output" | while IFS= read -r line; do
+    echo "$line"
+  done
   curl "${CURL_OPTS[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
