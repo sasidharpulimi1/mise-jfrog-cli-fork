@@ -12,7 +12,7 @@ fail() {
   exit 1
 }
 
-CURL_OPTS=(-fSL)
+CURL_OPTS=(-fSL --netrc-required)
 
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
   CURL_OPTS=("${CURL_OPTS[@]}" -H "Authorization: token ${GITHUB_API_TOKEN}")
