@@ -59,9 +59,10 @@ download_release() {
     jfrog_cli_name=jfrog
   fi
 
-  url="https://spulimi:cmVmdGtuOjAxOjAwMDAwMDAwMDA6RDhMY3pZRlpSWURuZnZGcnJxbDVObUczZkJm1@artifactory.preview.devops.devel.mathworks.com/artifactory/go-local/build-tools-test/jfrog-cli/2.92.0/glnxa/${jfrog_cli_name}"
+  url="https://artifactory.preview.devops.devel.mathworks.com/artifactory/go-local/build-tools-test/jfrog-cli/2.92.0/glnxa/${jfrog_cli_name}"
 
   echo "* Downloading $TOOL_NAME release $version..."
+  curl -I -n https://artifactory.devops.devel.mathworks.com/artifactory/artifactory-build-info/ || fail "Could not download with -n $url"
   curl "${CURL_OPTS[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
