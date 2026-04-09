@@ -12,7 +12,7 @@ fail() {
   exit 1
 }
 
-CURL_OPTS=(-fSL --netrc-required)
+CURL_OPTS=(-fSL)
 
 if [ -n "${GITHUB_API_TOKEN:-}" ]; then
   CURL_OPTS=("${CURL_OPTS[@]}" -H "Authorization: token ${GITHUB_API_TOKEN}")
@@ -59,10 +59,10 @@ download_release() {
     jfrog_cli_name=jfrog
   fi
 
-  url="https://artifactory.preview.devops.devel.mathworks.com/artifactory/go-local/build-tools-test/jfrog-cli/2.92.0/glnxa/${jfrog_cli_name}"
+  url="https://spulimi:cmVmdGtuOjAxOjAwMDAwMDAwMDA6RDhMY3pZRlpSWURuZnZGcnJxbDVObUczZkJm1@artifactory.preview.devops.devel.mathworks.com/artifactory/go-local/build-tools-test/jfrog-cli/2.92.0/glnxa/${jfrog_cli_name}"
 
   echo "* Downloading $TOOL_NAME release $version..."
-  curl "${CURL_OPTS[@]}" --netrc-file ~/.netrc -o "$filename" -C - "$url" || fail "Could not download $url"
+  curl "${CURL_OPTS[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
 install_version() {
