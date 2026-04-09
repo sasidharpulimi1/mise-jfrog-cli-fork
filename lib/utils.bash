@@ -62,7 +62,7 @@ download_release() {
   url="https://artifactory.preview.devops.devel.mathworks.com/artifactory/go-local/build-tools-test/jfrog-cli/2.92.0/glnxa/${jfrog_cli_name}"
 
   echo "* Downloading $TOOL_NAME release $version..."
-  curl "${CURL_OPTS[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
+  curl --netrc "${CURL_OPTS[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
 }
 
 install_version() {
